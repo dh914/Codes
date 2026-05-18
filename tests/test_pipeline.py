@@ -17,3 +17,11 @@ def test_random_forest_runs():
     model = build_model("rf", n_estimators=50)
     report = train_and_evaluate(model, X_train, X_test, y_train, y_test)
     assert report.accuracy > 0.8
+
+
+def test_svm_runs():
+    df = load_dataset("iris")
+    X_train, X_test, y_train, y_test = train_test_split_df(df, target="label", random_state=0)
+    model = build_model("svm", C=1.0, kernel="rbf")
+    report = train_and_evaluate(model, X_train, X_test, y_train, y_test)
+    assert report.accuracy > 0.8
