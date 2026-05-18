@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <style>
+      .white { fill: #FFFFFF; }
+      .blue { fill: #7BC4E2; }
+      .lime { fill: #B8C534; }
+      .white-stroke { fill: none; stroke: #FFFFFF; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- navy background -->
+  <rect x="0" y="0" width="900" height="500" rx="18" fill="#1F4E79"/>
+
+  <!-- corner accent (lime triangle) -->
+  <path d="M900,0 L900,90 Q900,0 810,0 Z" fill="#B8C534"/>
+  <circle cx="828" cy="36" r="6" fill="#7BC4E2"/>
+
+  <!-- scattered ambient dots -->
+  <circle cx="120" cy="80" r="6" fill="#B8C534"/>
+  <circle cx="160" cy="120" r="4" fill="#7BC4E2"/>
+  <circle cx="780" cy="380" r="7" fill="#B8C534"/>
+  <circle cx="820" cy="420" r="4" fill="#7BC4E2"/>
+  <circle cx="80" cy="380" r="5" fill="#7BC4E2"/>
+  <circle cx="60" cy="420" r="3" fill="#B8C534"/>
+
+  <!-- centered LOGO MARK (larger) -->
+  <g transform="translate(380,90)">
+    <!-- saturn ring -->
+    <ellipse cx="70" cy="22" rx="58" ry="12" class="white-stroke"/>
+    <!-- head -->
+    <circle cx="70" cy="30" r="26" fill="#1F4E79" class="white-stroke"/>
+    <path d="M48,24 Q70,8 92,24 Q92,42 70,52 Q48,42 48,24 Z" fill="#7BC4E2" opacity="0.9"/>
+    <!-- body -->
+    <path d="M70,58
+             L70,90
+             L14,168
+             Q6,178 16,182
+             L50,182
+             L70,158
+             L90,182
+             L124,182
+             Q134,178 126,168
+             L70,90 Z"
+          fill="#1F4E79" class="white-stroke"/>
+    <path d="M70,100 L36,160 L56,170 L70,150 Z" fill="#7BC4E2" opacity="0.95"/>
+    <path d="M70,100 L104,160 L84,170 L70,150 Z" fill="#B8C534" opacity="0.95"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="450" y="340" text-anchor="middle" font-size="56" font-weight="800" fill="#FFFFFF" letter-spacing="-1">청년마을</text>
+
+  <!-- slogan -->
+  <text x="450" y="378" text-anchor="middle" font-size="16" font-weight="500" fill="#B8C534" letter-spacing="6">함께 만드는 청년의 마을</text>
+
+  <!-- lime divider -->
+  <rect x="420" y="398" width="60" height="3" rx="1.5" fill="#B8C534"/>
+
+  <!-- footer -->
+  <text x="450" y="442" text-anchor="middle" font-size="13" font-weight="500" fill="#7BC4E2" letter-spacing="2">www.youthvillage.kr   ·   @youthvillage</text>
+</svg>
