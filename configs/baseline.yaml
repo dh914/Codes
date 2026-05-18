@@ -1,0 +1,11 @@
+dataset:
+  name: iris
+  target: label
+  test_size: 0.2
+  random_state: 42
+
+model:
+  kind: logreg
+  params:
+    C: 1.0
+    max_iter: 1000
