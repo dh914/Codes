@@ -5,6 +5,28 @@
       <stop offset="0%" stop-color="#FBF3DE"/>
       <stop offset="100%" stop-color="#F1E5C6"/>
     </radialGradient>
+    <radialGradient id="washYellow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8C969" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#E8C969" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#E8C969" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="washTerracotta" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D86B47" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#D86B47" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#D86B47" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9DA679"/>
+      <stop offset="100%" stop-color="#7E8A60"/>
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7E8A60"/>
+      <stop offset="100%" stop-color="#5F6B47"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5F6B47"/>
+      <stop offset="100%" stop-color="#3E4A2C"/>
+    </linearGradient>
     <filter id="grain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
       <feColorMatrix values="0 0 0 0 0.7
@@ -13,15 +35,17 @@
                              0 0 0 0.08 0"/>
       <feComposite in2="SourceGraphic" operator="in"/>
     </filter>
+    <filter id="watercolor" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+
     <!-- Rice stalk symbol -->
     <symbol id="riceStalk" viewBox="0 0 100 200">
-      <!-- stem -->
       <path d="M50,200 Q48,140 52,80 Q54,40 50,5" stroke="#7A8B3F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- leaves -->
       <path d="M50,170 Q20,150 8,120" stroke="#9BAB52" stroke-width="3" fill="none" stroke-linecap="round"/>
       <path d="M50,150 Q80,135 92,108" stroke="#9BAB52" stroke-width="3" fill="none" stroke-linecap="round"/>
       <path d="M50,120 Q22,100 14,72" stroke="#A8B85F" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- grains (drops) -->
       <g fill="#E0A82E">
         <ellipse cx="46" cy="14" rx="4" ry="7" transform="rotate(-12 46 14)"/>
         <ellipse cx="40" cy="26" rx="4" ry="7" transform="rotate(-18 40 26)"/>
@@ -41,10 +65,35 @@
         <ellipse cx="54" cy="30" rx="3" ry="5" transform="rotate(14 54 30)"/>
       </g>
     </symbol>
+
+    <!-- Pine tree silhouette -->
+    <symbol id="pine" viewBox="0 0 40 60">
+      <path d="M20,2 L10,22 L16,22 L6,40 L14,40 L2,58 L38,58 L26,40 L34,40 L24,22 L30,22 Z"
+            fill="#3E4A2C"/>
+      <rect x="18" y="56" width="4" height="6" fill="#5A4A2E"/>
+    </symbol>
+
+    <!-- Tiny thatched farmhouse -->
+    <symbol id="farmhouse" viewBox="0 0 80 50">
+      <path d="M5,28 Q40,8 75,28 L75,30 L5,30 Z" fill="#8C7050"/>
+      <path d="M5,28 Q40,8 75,28" stroke="#5A4A2E" stroke-width="1" fill="none"/>
+      <rect x="14" y="30" width="52" height="18" fill="#F1E5C6"/>
+      <rect x="14" y="30" width="52" height="18" stroke="#5A4A2E" stroke-width="1" fill="none"/>
+      <rect x="36" y="36" width="10" height="12" fill="#5A4A2E"/>
+      <rect x="22" y="35" width="8" height="7" fill="#C9B884"/>
+      <rect x="52" y="35" width="8" height="7" fill="#C9B884"/>
+    </symbol>
   </defs>
 
   <!-- paper background -->
   <rect x="0" y="0" width="900" height="500" rx="20" fill="url(#paperBg)"/>
+
+  <!-- watercolor washes (behind everything) -->
+  <ellipse cx="90" cy="120" rx="180" ry="140" fill="url(#washYellow)" filter="url(#watercolor)"/>
+  <ellipse cx="810" cy="120" rx="180" ry="140" fill="url(#washYellow)" filter="url(#watercolor)"/>
+  <ellipse cx="450" cy="60" rx="160" ry="60" fill="url(#washTerracotta)" filter="url(#watercolor)"/>
+
+  <!-- paper grain texture -->
   <rect x="0" y="0" width="900" height="500" rx="20" fill="#000" filter="url(#grain)" opacity="0.35"/>
 
   <!-- rice stalks in corners -->
@@ -65,8 +114,6 @@
     <text x="0" y="0" font-size="68" font-weight="800" fill="#3B4A3E" letter-spacing="6"
           font-family="'Nanum Myeongjo','Noto Serif KR',serif">동 훈</text>
     <text x="6" y="34" font-size="14" font-weight="600" fill="#7A8B3F" letter-spacing="4">DONG  HUN</text>
-
-    <!-- role -->
     <g transform="translate(0,76)">
       <circle cx="6" cy="-6" r="6" fill="#D86B47"/>
       <text x="24" y="0" font-size="20" font-weight="700" fill="#3B4A3E">커뮤니티 빌더</text>
@@ -75,7 +122,7 @@
   </g>
 
   <!-- handwritten-feel intro -->
-  <g transform="translate(90,360)">
+  <g transform="translate(90,345)">
     <text x="0" y="0" font-size="17" font-weight="500" fill="#5A4A2E" font-style="italic"
           font-family="'Nanum Pen Script','Gaegu','Noto Serif KR',cursive">
       "사람과 사람이 자연스럽게 만나는 자리를 만듭니다."
@@ -102,15 +149,39 @@
     </g>
   </g>
 
-  <!-- bottom divider -->
-  <line x1="90" y1="410" x2="810" y2="410" stroke="#C9B884" stroke-width="1.2"/>
+  <!-- ============ LANDSCAPE STRIP (bottom poster footer) ============ -->
+  <g opacity="0.95">
+    <!-- far hills -->
+    <path d="M0,440 Q120,410 220,425 Q320,440 420,420 Q540,400 660,420 Q780,440 900,425 L900,500 L0,500 Z"
+          fill="url(#hillFar)" filter="url(#watercolor)" opacity="0.6"/>
+    <!-- mid hills -->
+    <path d="M0,460 Q100,440 200,455 Q300,470 400,450 Q500,435 620,455 Q740,470 900,450 L900,500 L0,500 Z"
+          fill="url(#hillMid)" filter="url(#watercolor)" opacity="0.75"/>
+    <!-- near hill -->
+    <path d="M0,480 Q150,470 300,478 Q450,485 600,475 Q750,468 900,478 L900,500 L0,500 Z"
+          fill="url(#hillNear)" filter="url(#watercolor)" opacity="0.9"/>
+    <!-- pine trees on mid hill -->
+    <use href="#pine" x="160" y="430" width="18" height="28"/>
+    <use href="#pine" x="190" y="436" width="14" height="22"/>
+    <use href="#pine" x="700" y="432" width="16" height="26"/>
+    <use href="#pine" x="724" y="438" width="12" height="20"/>
+    <!-- farmhouse on near hill, left of center -->
+    <use href="#farmhouse" x="350" y="448" width="46" height="28"/>
+    <!-- small persimmon-orange dots (fruits in tree) -->
+    <g fill="#D86B47">
+      <circle cx="420" cy="455" r="3"/>
+      <circle cx="426" cy="460" r="2.5"/>
+      <circle cx="430" cy="453" r="2"/>
+    </g>
+    <path d="M428,460 L428,475" stroke="#5A4A2E" stroke-width="1.5"/>
+  </g>
 
-  <!-- tiny 청년마을 mini-mark bottom-right -->
-  <g transform="translate(740,448) scale(0.55)">
+  <!-- 청년마을 mini-mark integrated with landscape (lifted slightly) -->
+  <g transform="translate(745,430) scale(0.5)">
     <ellipse cx="35" cy="6" rx="22" ry="5" fill="none" stroke="#1F4E79" stroke-width="3"/>
-    <circle cx="35" cy="14" r="11" fill="none" stroke="#1F4E79" stroke-width="3"/>
+    <circle cx="35" cy="14" r="11" fill="#FBF3DE" stroke="#1F4E79" stroke-width="3"/>
     <path d="M35,26 L18,52 Q14,57 19,58 L30,58 L35,50 L40,58 L51,58 Q56,57 52,52 Z"
-          fill="none" stroke="#1F4E79" stroke-width="3"/>
+          fill="#FBF3DE" stroke="#1F4E79" stroke-width="3"/>
     <circle cx="10" cy="20" r="3" fill="#B8C534"/>
     <circle cx="58" cy="30" r="3" fill="#7BC4E2"/>
     <text x="78" y="48" font-size="20" font-weight="800" fill="#1F4E79" letter-spacing="-0.5">청년마을</text>
