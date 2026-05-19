@@ -41,3 +41,63 @@ pytest
 2. `notebooks/`에서 EDA 후, 안정화된 로직을 `src/codes/`로 이관
 3. `configs/*.yaml`로 실험 정의 → `scripts/train.py` 실행
 4. `tests/`로 핵심 로직 회귀 방지
+
+## 포스터/일러스트 생성 (Hugging Face)
+
+`scripts/generate_poster.py`는 Hugging Face Inference API로 포스터급 일러스트를 생성합니다.
+기본 모델은 `black-forest-labs/FLUX.1-schnell` (무료·고속·고화질).
+
+### 설치
+
+```bash
+pip install -e ".[poster]"
+```
+
+### 토큰 설정
+
+`.env` 파일에 다음을 추가하거나 셸에 export:
+
+```bash
+HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+토큰 발급: <https://huggingface.co/settings/tokens> (권한 Read)
+
+### 단일 생성
+
+```bash
+python scripts/generate_poster.py \
+  --prompt "Korean rural gouache illustration, rice plants, warm pastel" \
+  --output design/poster.png \
+  --aspect landscape
+```
+
+옵션:
+
+| 옵션 | 설명 | 기본값 |
+|---|---|---|
+| `-p, --prompt` | 프롬프트 (필수) | — |
+| `-o, --output` | 출력 PNG 경로 (필수) | — |
+| `-m, --model` | HF 모델 ID | `black-forest-labs/FLUX.1-schnell` |
+| `-a, --aspect` | `landscape` / `portrait` / `square` / `card_front` / `card_back` | `landscape` |
+| `--width`, `--height` | 픽셀 직접 지정 (aspect 덮어씀) | aspect 프리셋 |
+| `--steps` | 추론 스텝 (FLUX.1-schnell: 1~4) | `4` |
+| `--seed` | 재현용 시드 | 랜덤 |
+| `--provider` | `auto` / `hf-inference` / `fal-ai` / `replicate` / `together` | `auto` |
+
+### 명함 일러스트 일괄 생성
+
+```bash
+./scripts/generate_card_illustrations.sh
+```
+
+→ `design/card_dongheon_{front,back}_bg.png` 생성. 이후 SVG 텍스트 레이어와 합성.
+
+### 권장 모델
+
+| 모델 | 용도 | 비고 |
+|---|---|---|
+| `black-forest-labs/FLUX.1-schnell` | 일반 포스터·일러스트 | 4 step, 무료 |
+| `black-forest-labs/FLUX.1-dev` | 더 정교한 디테일 | gated, 토큰 권한 필요 |
+| `black-forest-labs/FLUX.2-klein-9B` | 최신 (FLUX.2) | 큰 모델 |
+| `stabilityai/stable-diffusion-xl-base-1.0` | 클래식 SDXL | guidance 7.5 권장 |
