@@ -1,0 +1,80 @@
+name: Generate illustrations
+
+on:
+  workflow_dispatch:
+    inputs:
+      keys:
+        description: 'Catalog keys (space-separated) or "all"'
+        required: false
+        default: 'all'
+      model:
+        description: 'Optional model override (e.g. black-forest-labs/FLUX.1-dev)'
+        required: false
+        default: ''
+      provider:
+        description: 'HF provider (auto / hf-inference / fal-ai / replicate / together)'
+        required: false
+        default: 'auto'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[poster]"
+
+      - name: Generate illustrations
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::HF_TOKEN secret not set. Add at https://github.com/${{ github.repository }}/settings/secrets/actions"
+            exit 1
+          fi
+          ARGS=()
+          if [ "${{ inputs.keys }}" = "all" ] || [ -z "${{ inputs.keys }}" ]; then
+            ARGS+=(--all)
+          else
+            for k in ${{ inputs.keys }}; do ARGS+=("$k"); done
+          fi
+          if [ -n "${{ inputs.model }}" ]; then
+            ARGS+=(-m "${{ inputs.model }}")
+          fi
+          ARGS+=(--provider "${{ inputs.provider }}")
+          python scripts/generate_from_catalog.py "${ARGS[@]}"
+
+      - name: Commit generated PNGs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add design/illust_*.png || true
+          if git diff --staged --quiet; then
+            echo "No new illustrations to commit."
+          else
+            git commit -m "Generate illustrations via workflow_dispatch [skip ci]
+
+keys=${{ inputs.keys }} model=${{ inputs.model || 'catalog-default' }} provider=${{ inputs.provider }}"
+            git push
+          fi
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: illustrations-${{ github.run_number }}
+          path: design/illust_*.png
+          if-no-files-found: warn
+          retention-days: 30
