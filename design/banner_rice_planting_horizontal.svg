@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 600" width="3000" height="600"
+     font-family="'Nanum Pen Script','Gaegu','Pretendard','Noto Sans KR',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#F5E8C8"/>
+      <stop offset="50%" stop-color="#FBF3DE"/>
+      <stop offset="100%" stop-color="#F1E5C6"/>
+    </linearGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.7
+                             0 0 0 0 0.6
+                             0 0 0 0 0.4
+                             0 0 0 0.06 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="3"/>
+    </filter>
+
+    <symbol id="rice" viewBox="0 0 100 200">
+      <path d="M50,200 Q48,140 52,80 Q54,40 50,5" stroke="#7A8B3F" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M50,170 Q20,150 8,120" stroke="#9BAB52" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,150 Q80,135 92,108" stroke="#9BAB52" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,120 Q22,100 14,72" stroke="#A8B85F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,100 Q78,82 88,55" stroke="#A8B85F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <g fill="#E0A82E">
+        <ellipse cx="46" cy="14" rx="5" ry="9" transform="rotate(-12 46 14)"/>
+        <ellipse cx="40" cy="26" rx="5" ry="9" transform="rotate(-18 40 26)"/>
+        <ellipse cx="56" cy="22" rx="5" ry="9" transform="rotate(12 56 22)"/>
+        <ellipse cx="36" cy="40" rx="5" ry="9" transform="rotate(-22 36 40)"/>
+        <ellipse cx="60" cy="38" rx="5" ry="9" transform="rotate(18 60 38)"/>
+        <ellipse cx="44" cy="52" rx="5" ry="9" transform="rotate(-14 44 52)"/>
+        <ellipse cx="58" cy="56" rx="5" ry="9" transform="rotate(14 58 56)"/>
+        <ellipse cx="48" cy="66" rx="4.5" ry="8" transform="rotate(-8 48 66)"/>
+      </g>
+      <g fill="#D86B47">
+        <ellipse cx="50" cy="6" rx="4.5" ry="8"/>
+        <ellipse cx="48" cy="34" rx="4" ry="7" transform="rotate(-10 48 34)"/>
+        <ellipse cx="52" cy="46" rx="4" ry="7" transform="rotate(8 52 46)"/>
+      </g>
+    </symbol>
+  </defs>
+
+  <!-- background -->
+  <rect width="3000" height="600" fill="url(#bg)"/>
+  <rect width="3000" height="600" fill="#000" filter="url(#grain)" opacity="0.25"/>
+
+  <!-- left rice cluster -->
+  <use href="#rice" x="60" y="40" width="200" height="400" transform="rotate(-12 160 240)"/>
+  <use href="#rice" x="120" y="100" width="170" height="340" transform="rotate(-28 205 270)"/>
+
+  <!-- right rice cluster -->
+  <use href="#rice" x="2740" y="40" width="200" height="400" transform="rotate(12 2840 240)"/>
+  <use href="#rice" x="2700" y="100" width="170" height="340" transform="rotate(28 2785 270)"/>
+
+  <!-- decorative dashed border -->
+  <rect x="40" y="40" width="2920" height="520" fill="none" stroke="#D4A93C" stroke-width="3"
+        stroke-dasharray="2 14" rx="12"/>
+
+  <!-- year/host badge (top-left of center) -->
+  <g transform="translate(700,110)">
+    <text x="0" y="0" font-size="38" font-weight="600" fill="#7A8B3F" letter-spacing="6"
+          font-family="'Nanum Pen Script','Gaegu',cursive">2026년 봄  ·  덕산 두레농장</text>
+  </g>
+
+  <!-- MAIN TITLE - centered horizontally -->
+  <g transform="translate(1500,290)" text-anchor="middle">
+    <text x="0" y="0" font-size="200" font-weight="800" letter-spacing="40"
+          font-family="'Nanum Pen Script','Gaegu','Nanum Myeongjo',cursive">
+      <tspan fill="#D86B47">손</tspan>
+      <tspan dx="20" fill="#D4A93C">모</tspan>
+      <tspan dx="20" fill="#7BC4E2">내</tspan>
+      <tspan dx="20" fill="#9BAB52">기</tspan>
+    </text>
+  </g>
+
+  <!-- "함께 할 사람 4시" stamp -->
+  <g transform="translate(1500,400)">
+    <rect x="-200" y="-32" width="400" height="64" rx="4" fill="none" stroke="#D86B47" stroke-width="3"
+          filter="url(#crayon)"/>
+    <text x="0" y="14" text-anchor="middle" font-size="36" font-weight="600" fill="#D86B47" letter-spacing="6"
+          font-family="'Nanum Pen Script','Gaegu',cursive">함께 할 사람 4시</text>
+  </g>
+
+  <!-- Event details band (bottom) -->
+  <g transform="translate(420,490)" font-family="'Pretendard','Noto Sans KR',sans-serif" font-size="28" fill="#3B4A3E">
+    <g>
+      <circle cx="0" cy="-2" r="11" fill="#E58B95"/>
+      <text x="22" y="6" font-weight="700" letter-spacing="3">일시</text>
+      <text x="100" y="6" font-weight="500">2026. 5. 27. (수)  09:00 ~ 12:00</text>
+    </g>
+    <g transform="translate(820,0)">
+      <circle cx="0" cy="-2" r="11" fill="#3F8B82"/>
+      <text x="22" y="6" font-weight="700" letter-spacing="3">장소</text>
+      <text x="100" y="6" font-weight="500">두레농장 논 (제천시 덕산면 도전리 758)</text>
+    </g>
+    <g transform="translate(1750,0)">
+      <circle cx="0" cy="-2" r="11" fill="#D4A93C"/>
+      <text x="22" y="6" font-weight="700" letter-spacing="3">참가비</text>
+      <text x="120" y="6" font-weight="500">30,000원  ·  점심·숙소·쌀5kg·옥수수20개 제공</text>
+    </g>
+  </g>
+
+  <!-- organizer + 청년마을 mini-mark (bottom right) -->
+  <g transform="translate(1500,548)" text-anchor="middle">
+    <text x="0" y="0" font-size="22" font-weight="500" fill="#8C7A4B" letter-spacing="4"
+          font-family="'Pretendard','Noto Sans KR',sans-serif">
+      주관: 사단법인 농촌공동체연구소  ·  청년마을  ·  신청: forms.gle/mLp2XKF4Z1Rn2HcW8
+    </text>
+  </g>
+
+  <!-- 청년마을 mini logo (far bottom-left corner) -->
+  <g transform="translate(80,510) scale(0.7)">
+    <ellipse cx="35" cy="6" rx="22" ry="5" fill="none" stroke="#1F4E79" stroke-width="3"/>
+    <circle cx="35" cy="14" r="10" fill="#FBF3DE" stroke="#1F4E79" stroke-width="3"/>
+    <path d="M35,26 L18,52 Q14,57 19,58 L30,58 L35,50 L40,58 L51,58 Q56,57 52,52 Z"
+          fill="#FBF3DE" stroke="#1F4E79" stroke-width="3"/>
+    <circle cx="10" cy="20" r="3" fill="#B8C534"/>
+    <circle cx="58" cy="30" r="3" fill="#7BC4E2"/>
+    <text x="78" y="48" font-size="26" font-weight="800" fill="#1F4E79" letter-spacing="-0.5">청년마을</text>
+  </g>
+</svg>

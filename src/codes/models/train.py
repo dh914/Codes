@@ -9,6 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 
 
 @dataclass
@@ -30,6 +31,14 @@ def build_model(kind: str = "logreg", **params: Any) -> Pipeline:
             **params,
         )
         return Pipeline([("clf", clf)])
+    if kind == "svm":
+        clf = SVC(
+            C=params.pop("C", 1.0),
+            kernel=params.pop("kernel", "rbf"),
+            random_state=params.pop("random_state", 42),
+            **params,
+        )
+        return Pipeline([("scaler", StandardScaler()), ("clf", clf)])
     raise ValueError(f"Unknown model kind: {kind!r}")
 
 

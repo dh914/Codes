@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "description": "Reference-quality prompt catalog for Korean modern folk illustration style. Target aesthetic: pastel crayon texture, flat illustration, cream paper, muted earth tones, stylized round-faced characters, hand-drawn warmth (think modern Korean children's-book illustrators).",
+    "style_token": "Korean modern illustrator children's book style, flat illustration with crayon and color pencil texture, soft pastel palette (cream beige, sage green, mustard yellow, terracotta orange, dusty blue), stylized round-faced figures with simple features, hand-drawn warm lines, gentle muted earth tones, modern Korean folk illustration aesthetic, soft watercolor wash, cozy nostalgic mood",
+    "negative_default": "photorealistic, 3d render, harsh shadows, glossy, plastic, oversaturated, neon, sharp details, text, watermark, signature, blurry, low quality, deformed",
+    "recommended_models": [
+      "black-forest-labs/FLUX.1-schnell",
+      "black-forest-labs/FLUX.1-dev",
+      "stabilityai/stable-diffusion-xl-base-1.0"
+    ]
+  },
+
+  "card_front_bg": {
+    "subject": "decorative cream paper background for a business card front, rice plants framing the top-left and top-right corners with golden yellow rice grains and sage green leaves, soft rolling hills silhouette along the bottom edge with a tiny thatched-roof Korean farmhouse and a few pine trees, persimmon tree with orange fruits on the left hill, generous empty cream space in the center for typography overlay, horizontal landscape composition",
+    "aspect": "card_front",
+    "model": "black-forest-labs/FLUX.1-schnell",
+    "steps": 4,
+    "seed": 214
+  },
+
+  "card_back_bg": {
+    "subject": "decorative cream paper background for a business card back, soft impressionistic Korean rural village scene as a horizontal band, layered rolling hills, a small thatched-roof farmhouse on a hill, two persimmon trees with orange fruits, a rice paddy stripe in golden yellow, distant misty mountains, pine trees, no people, centered composition with breathing room around the edges, horizontal landscape",
+    "aspect": "card_back",
+    "model": "black-forest-labs/FLUX.1-schnell",
+    "steps": 4,
+    "seed": 215
+  },
+
+  "rice_planting_event": {
+    "subject": "group of stylized round-faced young Korean farmers transplanting rice seedlings in a flooded paddy field, bending over with green rice bunches in their hands, water reflections under their feet, soft ripples, brown muddy paddy borders, a few people working in rhythm, simple flat character design with minimal facial features, cozy cooperative atmosphere, vertical poster composition with rice plants in upper corners",
+    "aspect": "portrait",
+    "model": "black-forest-labs/FLUX.1-dev",
+    "steps": 28,
+    "seed": 527
+  },
+
+  "village_scene": {
+    "subject": "small Korean rural village scene, three thatched-roof farmhouses clustered together, persimmon trees with orange ripe fruits, tall pine trees, golden rice paddies in foreground, rolling green hills, misty mountains in distance, narrow dirt path winding through, warm afternoon light, no people, peaceful nostalgic mood",
+    "aspect": "landscape",
+    "model": "black-forest-labs/FLUX.1-schnell",
+    "steps": 4,
+    "seed": 99
+  },
+
+  "harvest_scene": {
+    "subject": "golden autumn rice harvest scene, two stylized round-faced figures carrying woven baskets of rice on their backs, walking along a paddy ridge, golden yellow rice stalks bending with grains, warm orange-tinted sunlight, persimmon tree with ripe fruits in background, thatched-roof barn, cozy harvest atmosphere, horizontal composition",
+    "aspect": "landscape",
+    "model": "black-forest-labs/FLUX.1-dev",
+    "steps": 28,
+    "seed": 1108
+  },
+
+  "community_circle": {
+    "subject": "stylized round-faced young Korean villagers sitting in a circle on a wooden floor of a traditional hanok porch, sharing tea and conversation, soft warm light from a paper lantern overhead, simple flat character design, cozy community gathering atmosphere, persimmon tree visible through the door, no detailed faces, square composition",
+    "aspect": "square",
+    "model": "black-forest-labs/FLUX.1-dev",
+    "steps": 28,
+    "seed": 731
+  }
+}

@@ -1,0 +1,359 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800"
+     font-family="'Nanum Pen Script','Gaegu','Pretendard','Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="paperBg" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#FBF3DE"/>
+      <stop offset="100%" stop-color="#F1E5C6"/>
+    </radialGradient>
+    <linearGradient id="paddyWater" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#C8E0EA" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#A8C8D9" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#88B0C5" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="paddyMud" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9B7A4A"/>
+      <stop offset="100%" stop-color="#7A5A3A"/>
+    </linearGradient>
+    <linearGradient id="paddyBack" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#B8A565"/>
+      <stop offset="100%" stop-color="#8C7A4A"/>
+    </linearGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.7
+                             0 0 0 0 0.6
+                             0 0 0 0 0.4
+                             0 0 0 0.06 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="3"/>
+    </filter>
+    <filter id="ripple">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="1" seed="2"/>
+      <feDisplacementMap in="SourceGraphic" scale="2"/>
+    </filter>
+
+    <!-- Rice stalk -->
+    <symbol id="rice" viewBox="0 0 100 200">
+      <path d="M50,200 Q48,140 52,80 Q54,40 50,5" stroke="#7A8B3F" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M50,170 Q20,150 8,120" stroke="#9BAB52" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,150 Q80,135 92,108" stroke="#9BAB52" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,120 Q22,100 14,72" stroke="#A8B85F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M50,100 Q78,82 88,55" stroke="#A8B85F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <g fill="#E0A82E">
+        <ellipse cx="46" cy="14" rx="5" ry="9" transform="rotate(-12 46 14)"/>
+        <ellipse cx="40" cy="26" rx="5" ry="9" transform="rotate(-18 40 26)"/>
+        <ellipse cx="56" cy="22" rx="5" ry="9" transform="rotate(12 56 22)"/>
+        <ellipse cx="36" cy="40" rx="5" ry="9" transform="rotate(-22 36 40)"/>
+        <ellipse cx="60" cy="38" rx="5" ry="9" transform="rotate(18 60 38)"/>
+        <ellipse cx="44" cy="52" rx="5" ry="9" transform="rotate(-14 44 52)"/>
+        <ellipse cx="58" cy="56" rx="5" ry="9" transform="rotate(14 58 56)"/>
+        <ellipse cx="48" cy="66" rx="4.5" ry="8" transform="rotate(-8 48 66)"/>
+      </g>
+      <g fill="#D86B47">
+        <ellipse cx="50" cy="6" rx="4.5" ry="8"/>
+        <ellipse cx="48" cy="34" rx="4" ry="7" transform="rotate(-10 48 34)"/>
+        <ellipse cx="52" cy="46" rx="4" ry="7" transform="rotate(8 52 46)"/>
+      </g>
+      <g fill="#C7B25B">
+        <ellipse cx="42" cy="20" rx="3.5" ry="6" transform="rotate(-18 42 20)"/>
+        <ellipse cx="54" cy="30" rx="3.5" ry="6" transform="rotate(14 54 30)"/>
+      </g>
+    </symbol>
+
+    <!-- Person planting rice — round face, bent over, with rice bunch -->
+    <symbol id="planter" viewBox="0 0 120 200">
+      <!-- legs in water -->
+      <rect x="48" y="105" width="8" height="50" fill="#3D5C84" rx="2"/>
+      <rect x="64" y="105" width="8" height="50" fill="#3D5C84" rx="2"/>
+      <!-- water ripples around legs -->
+      <ellipse cx="60" cy="156" rx="36" ry="8" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+      <ellipse cx="60" cy="160" rx="44" ry="9" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+      <!-- torso (bent forward) -->
+      <path d="M40,55 Q30,75 35,100 Q45,115 60,113 Q78,115 85,100 Q90,75 80,55 Z" fill="#E8A04A"/>
+      <!-- back of shirt detail -->
+      <path d="M40,55 Q30,75 35,100" stroke="#C77E2E" stroke-width="1.5" fill="none"/>
+      <!-- arms reaching down -->
+      <path d="M40,60 Q25,75 22,98 Q22,108 28,113" stroke="#E8A04A" stroke-width="11" fill="none" stroke-linecap="round"/>
+      <path d="M80,60 Q95,75 98,98 Q98,108 92,113" stroke="#E8A04A" stroke-width="11" fill="none" stroke-linecap="round"/>
+      <!-- hands -->
+      <circle cx="28" cy="113" r="6" fill="#F5C9A0"/>
+      <circle cx="92" cy="113" r="6" fill="#F5C9A0"/>
+      <!-- rice bunch in hand -->
+      <g transform="translate(22,108)">
+        <path d="M0,8 L-3,-4 M3,8 L1,-6 M6,8 L4,-3 M9,8 L8,-5 M12,8 L11,-4" stroke="#7A8B3F" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="-2" cy="-3" rx="2" ry="3" fill="#9BAB52"/>
+        <ellipse cx="3" cy="-5" rx="2" ry="3" fill="#9BAB52"/>
+        <ellipse cx="8" cy="-4" rx="2" ry="3" fill="#9BAB52"/>
+        <ellipse cx="11" cy="-3" rx="2" ry="3" fill="#9BAB52"/>
+      </g>
+      <!-- head (bent down) -->
+      <circle cx="60" cy="45" r="22" fill="#F5C9A0"/>
+      <!-- hair -->
+      <path d="M40,40 Q42,22 60,20 Q78,22 80,40 Q78,32 60,30 Q42,32 40,40 Z" fill="#3B2A18"/>
+      <!-- ear -->
+      <ellipse cx="38" cy="48" rx="2.5" ry="4" fill="#E8B280"/>
+    </symbol>
+
+    <!-- Pine tree -->
+    <symbol id="pine" viewBox="0 0 40 60">
+      <path d="M20,2 L10,22 L16,22 L6,40 L14,40 L2,58 L38,58 L26,40 L34,40 L24,22 L30,22 Z" fill="#3E4A2C"/>
+      <rect x="18" y="56" width="4" height="6" fill="#5A4A2E"/>
+    </symbol>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="1800" fill="url(#paperBg)"/>
+  <rect x="0" y="0" width="1200" height="1800" fill="#000" filter="url(#grain)" opacity="0.3"/>
+
+  <!-- TOP: rice plants in corners -->
+  <use href="#rice" x="40" y="40" width="180" height="360" transform="rotate(-8 130 220)"/>
+  <use href="#rice" x="80" y="60" width="160" height="320" transform="rotate(-22 160 220)"/>
+  <use href="#rice" x="980" y="40" width="180" height="360" transform="rotate(8 1070 220)"/>
+  <use href="#rice" x="940" y="60" width="160" height="320" transform="rotate(22 1020 220)"/>
+
+  <!-- year tag -->
+  <text x="600" y="120" text-anchor="middle" font-size="36" font-weight="600" fill="#7A8B3F" letter-spacing="6"
+        font-family="'Nanum Pen Script','Gaegu',cursive">2026년 봄</text>
+
+  <!-- Main title block -->
+  <g transform="translate(600,210)" text-anchor="middle">
+    <text x="0" y="0" font-size="80" font-weight="700" letter-spacing="20"
+          font-family="'Nanum Pen Script','Gaegu',cursive">
+      <tspan fill="#B68FA0">덕산</tspan>
+      <tspan dx="20" fill="#7A8B3F">두레농장</tspan>
+    </text>
+  </g>
+
+  <!-- Hand-letter big title -->
+  <g transform="translate(600,360)" text-anchor="middle">
+    <text x="0" y="0" font-size="180" font-weight="800" letter-spacing="20"
+          font-family="'Nanum Pen Script','Gaegu','Nanum Myeongjo',cursive">
+      <tspan fill="#D86B47">손</tspan>
+      <tspan dx="30" fill="#D4A93C">모</tspan>
+      <tspan dx="30" fill="#7BC4E2">내</tspan>
+      <tspan dx="30" fill="#9BAB52">기</tspan>
+    </text>
+  </g>
+
+  <!-- "함께 할 사람" stamp -->
+  <g transform="translate(600,470)">
+    <rect x="-180" y="-32" width="360" height="64" rx="4" fill="none" stroke="#D86B47" stroke-width="3"
+          filter="url(#crayon)"/>
+    <text x="0" y="14" text-anchor="middle" font-size="36" font-weight="600" fill="#D86B47" letter-spacing="6"
+          font-family="'Nanum Pen Script','Gaegu',cursive">함께 할 사람 4시</text>
+  </g>
+
+  <!-- =================== ILLUSTRATION HERO =================== -->
+  <g transform="translate(0,560)">
+    <!-- back paddy (planted seedlings) -->
+    <path d="M0,0 L1200,0 L1200,140 L0,140 Z" fill="url(#paddyBack)" filter="url(#crayon)"/>
+    <!-- diagonal mud ridges -->
+    <path d="M0,0 L520,0 L380,140 L0,140 Z" fill="url(#paddyMud)" opacity="0.85"/>
+    <path d="M1200,0 L700,0 L820,140 L1200,140 Z" fill="url(#paddyMud)" opacity="0.85"/>
+    <!-- back paddy seedling rows -->
+    <g stroke="#5F6B47" stroke-width="2.5" stroke-linecap="round">
+      <g transform="translate(540,20)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(560,15)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(580,12)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(600,10)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(620,12)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(640,15)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(660,20)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <!-- second row -->
+      <g transform="translate(530,50)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(560,45)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(590,42)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(620,42)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(650,45)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(680,50)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <!-- third row -->
+      <g transform="translate(515,85)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(555,80)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(600,78)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(645,80)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(685,85)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <!-- fourth row -->
+      <g transform="translate(500,115)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(545,110)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(600,108)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(655,110)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+      <g transform="translate(700,115)">
+        <path d="M0,0 L-3,-12 M0,0 L3,-12 M0,0 L0,-14"/>
+      </g>
+    </g>
+
+    <!-- water paddy (foreground) -->
+    <path d="M0,140 L1200,140 L1200,480 L0,480 Z" fill="url(#paddyWater)" filter="url(#crayon)"/>
+    <!-- water ripple lines -->
+    <g stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.4">
+      <path d="M100,200 Q300,195 500,200"/>
+      <path d="M700,230 Q900,225 1100,230"/>
+      <path d="M50,280 Q250,275 450,280 Q650,285 850,280"/>
+      <path d="M400,340 Q600,335 800,340 Q1000,345 1180,340"/>
+      <path d="M20,400 Q220,395 420,400"/>
+      <path d="M600,440 Q800,435 1000,440"/>
+    </g>
+
+    <!-- People planting (back row, smaller) -->
+    <use href="#planter" x="80" y="130" width="110" height="200"/>
+    <use href="#planter" x="280" y="120" width="110" height="200"/>
+    <use href="#planter" x="490" y="140" width="110" height="200" transform="scale(-1 1) translate(-1090,0)"/>
+    <use href="#planter" x="730" y="125" width="110" height="200"/>
+    <use href="#planter" x="950" y="135" width="110" height="200" transform="scale(-1 1) translate(-2010,0)"/>
+
+    <!-- shirts color variation overlay on back row planters -->
+    <g opacity="0.95">
+      <!-- override shirts via additional fills (positioned to match planter symbol scale 110x200 placement) -->
+      <ellipse cx="135" cy="240" rx="32" ry="32" fill="#E8B96A" opacity="0.0"/>
+    </g>
+
+    <!-- Front row larger planters (additional) -->
+    <use href="#planter" x="180" y="220" width="140" height="240"/>
+    <use href="#planter" x="540" y="230" width="140" height="240" transform="scale(-1 1) translate(-1220,0)"/>
+    <use href="#planter" x="840" y="220" width="140" height="240"/>
+  </g>
+
+  <!-- =================== EVENT DETAILS =================== -->
+  <g transform="translate(160,1130)" font-family="'Pretendard','Noto Sans KR',sans-serif">
+    <!-- 일시 -->
+    <g transform="translate(0,0)">
+      <circle cx="0" cy="-2" r="14" fill="#E58B95"/>
+      <text x="40" y="0" font-size="32" font-weight="700" fill="#3B4A3E" letter-spacing="6">일 시</text>
+      <text x="200" y="0" font-size="30" font-weight="500" fill="#3B4A3E">2026. 5. 27. (수)   09:00am ~ 12:00pm</text>
+    </g>
+    <!-- 장소 -->
+    <g transform="translate(0,70)">
+      <circle cx="0" cy="-2" r="14" fill="#3F8B82"/>
+      <text x="40" y="0" font-size="32" font-weight="700" fill="#3B4A3E" letter-spacing="6">장 소</text>
+      <text x="200" y="0" font-size="30" font-weight="500" fill="#3B4A3E">두레농장 논 (제천시 덕산면 도전리 758)</text>
+    </g>
+    <!-- 참가비 -->
+    <g transform="translate(0,140)">
+      <circle cx="0" cy="-2" r="14" fill="#D4A93C"/>
+      <text x="40" y="0" font-size="32" font-weight="700" fill="#3B4A3E" letter-spacing="6">참가비</text>
+      <text x="200" y="0" font-size="30" font-weight="500" fill="#3B4A3E">30,000원   농협 355-0061-7648-63  청년마을(주)</text>
+    </g>
+    <!-- 혜택 -->
+    <g transform="translate(0,210)">
+      <circle cx="0" cy="-2" r="14" fill="#7A8B3F"/>
+      <text x="40" y="0" font-size="32" font-weight="700" fill="#3B4A3E" letter-spacing="6">혜 택</text>
+      <text x="200" y="0" font-size="28" font-weight="500" fill="#3B4A3E">점심, 당일 숙소, 쌀 5kg과 유기농 옥수수 20개 (택배 발송)</text>
+    </g>
+  </g>
+
+  <!-- divider -->
+  <line x1="160" y1="1430" x2="1040" y2="1430" stroke="#D4A93C" stroke-width="2"/>
+
+  <!-- 주관 -->
+  <g transform="translate(600,1490)" text-anchor="middle" font-family="'Nanum Pen Script','Gaegu',cursive">
+    <text x="0" y="0" font-size="24" font-weight="600" fill="#D86B47" letter-spacing="6">주 관</text>
+    <text x="0" y="60" font-size="56" font-weight="700" fill="#3B4A3E" letter-spacing="12">사단법인 농촌공동체연구소</text>
+  </g>
+
+  <!-- 청년마을 logo bottom-left -->
+  <g transform="translate(140,1620) scale(1.4)">
+    <ellipse cx="35" cy="6" rx="22" ry="5" fill="none" stroke="#1F4E79" stroke-width="4"/>
+    <circle cx="35" cy="14" r="11" fill="#FBF3DE" stroke="#1F4E79" stroke-width="4"/>
+    <path d="M48,18 Q52,12 60,16 Q58,22 48,18 Z" fill="#7BC4E2"/>
+    <path d="M35,26 L18,52 Q14,57 19,58 L30,58 L35,50 L40,58 L51,58 Q56,57 52,52 Z"
+          fill="#FBF3DE" stroke="#1F4E79" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M35,30 L24,48 L33,52 L35,45 Z" fill="#7BC4E2" opacity="0.9"/>
+    <path d="M35,30 L46,48 L37,52 L35,45 Z" fill="#B8C534" opacity="0.9"/>
+    <circle cx="10" cy="20" r="3.5" fill="#B8C534"/>
+    <circle cx="58" cy="30" r="3.5" fill="#7BC4E2"/>
+    <text x="78" y="48" font-size="36" font-weight="800" fill="#1F4E79" letter-spacing="-1"
+          font-family="'Pretendard','Noto Sans KR',sans-serif">청년마을</text>
+  </g>
+
+  <!-- QR placeholder bottom-right -->
+  <g transform="translate(950,1620)">
+    <rect x="0" y="0" width="120" height="120" fill="#FBF3DE" stroke="#3B4A3E" stroke-width="2"/>
+    <!-- fake QR pattern -->
+    <g fill="#3B4A3E">
+      <rect x="8" y="8" width="24" height="24"/>
+      <rect x="88" y="8" width="24" height="24"/>
+      <rect x="8" y="88" width="24" height="24"/>
+      <rect x="14" y="14" width="12" height="12" fill="#FBF3DE"/>
+      <rect x="94" y="14" width="12" height="12" fill="#FBF3DE"/>
+      <rect x="14" y="94" width="12" height="12" fill="#FBF3DE"/>
+      <rect x="40" y="12" width="6" height="6"/>
+      <rect x="52" y="12" width="6" height="6"/>
+      <rect x="64" y="12" width="6" height="6"/>
+      <rect x="76" y="20" width="6" height="6"/>
+      <rect x="40" y="30" width="6" height="6"/>
+      <rect x="58" y="30" width="6" height="6"/>
+      <rect x="70" y="30" width="6" height="6"/>
+      <rect x="12" y="42" width="6" height="6"/>
+      <rect x="24" y="42" width="6" height="6"/>
+      <rect x="42" y="48" width="6" height="6"/>
+      <rect x="54" y="48" width="6" height="6"/>
+      <rect x="68" y="48" width="6" height="6"/>
+      <rect x="80" y="48" width="6" height="6"/>
+      <rect x="100" y="42" width="6" height="6"/>
+      <rect x="12" y="56" width="6" height="6"/>
+      <rect x="32" y="56" width="6" height="6"/>
+      <rect x="44" y="62" width="6" height="6"/>
+      <rect x="60" y="62" width="6" height="6"/>
+      <rect x="78" y="60" width="6" height="6"/>
+      <rect x="92" y="62" width="6" height="6"/>
+      <rect x="106" y="56" width="6" height="6"/>
+      <rect x="40" y="74" width="6" height="6"/>
+      <rect x="58" y="76" width="6" height="6"/>
+      <rect x="74" y="74" width="6" height="6"/>
+      <rect x="42" y="92" width="6" height="6"/>
+      <rect x="54" y="100" width="6" height="6"/>
+      <rect x="68" y="92" width="6" height="6"/>
+      <rect x="80" y="98" width="6" height="6"/>
+    </g>
+    <text x="60" y="148" text-anchor="middle" font-size="18" fill="#5A4A2E"
+          font-family="'Nanum Pen Script','Gaegu',cursive">참가 신청 링크</text>
+    <text x="60" y="170" text-anchor="middle" font-size="13" fill="#7A6A4E" font-family="monospace">forms.gle/...</text>
+  </g>
+</svg>
