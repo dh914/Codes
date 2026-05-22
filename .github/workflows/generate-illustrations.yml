@@ -1,5 +1,12 @@
 name: Generate illustrations
 
+# Triggered manually (workflow_dispatch) or by edits to the prompt catalog /
+# the .illust-trigger marker file.
+#
+# Requires repository secret HF_TOKEN (Hugging Face Read-scope inference
+# token). Add at:
+#   https://github.com/dh914/Codes/settings/secrets/actions/new
+
 on:
   workflow_dispatch:
     inputs:
@@ -8,13 +15,18 @@ on:
         required: false
         default: 'all'
       model:
-        description: 'Optional model override (e.g. black-forest-labs/FLUX.1-dev)'
+        description: 'Optional model override (default: FLUX.1-schnell)'
         required: false
-        default: ''
+        default: 'black-forest-labs/FLUX.1-schnell'
       provider:
         description: 'HF provider (auto / hf-inference / fal-ai / replicate / together)'
         required: false
         default: 'auto'
+  push:
+    paths:
+      - 'prompts/**'
+      - '.github/workflows/generate-illustrations.yml'
+      - '.illust-trigger'
 
 permissions:
   contents: write
@@ -25,6 +37,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,19 +55,26 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           if [ -z "$HF_TOKEN" ]; then
-            echo "::error::HF_TOKEN secret not set. Add at https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "::error::HF_TOKEN secret not set. Add at https://github.com/${{ github.repository }}/settings/secrets/actions/new"
             exit 1
           fi
+          KEYS_INPUT="${{ github.event.inputs.keys }}"
+          MODEL_INPUT="${{ github.event.inputs.model }}"
+          PROVIDER_INPUT="${{ github.event.inputs.provider }}"
           ARGS=()
-          if [ "${{ inputs.keys }}" = "all" ] || [ -z "${{ inputs.keys }}" ]; then
+          if [ -z "$KEYS_INPUT" ] || [ "$KEYS_INPUT" = "all" ]; then
             ARGS+=(--all)
           else
-            for k in ${{ inputs.keys }}; do ARGS+=("$k"); done
+            for k in $KEYS_INPUT; do ARGS+=("$k"); done
           fi
-          if [ -n "${{ inputs.model }}" ]; then
-            ARGS+=(-m "${{ inputs.model }}")
+          if [ -n "$MODEL_INPUT" ]; then
+            ARGS+=(-m "$MODEL_INPUT")
+          else
+            ARGS+=(-m "black-forest-labs/FLUX.1-schnell")
           fi
-          ARGS+=(--provider "${{ inputs.provider }}")
+          if [ -n "$PROVIDER_INPUT" ]; then
+            ARGS+=(--provider "$PROVIDER_INPUT")
+          fi
           python scripts/generate_from_catalog.py "${ARGS[@]}"
 
       - name: Commit generated PNGs
@@ -64,9 +85,9 @@ jobs:
           if git diff --staged --quiet; then
             echo "No new illustrations to commit."
           else
-            git commit -m "Generate illustrations via workflow_dispatch [skip ci]
+            git commit -m "Generate illustrations [skip ci]
 
-keys=${{ inputs.keys }} model=${{ inputs.model || 'catalog-default' }} provider=${{ inputs.provider }}"
+run=${{ github.run_number }}"
             git push
           fi
 
